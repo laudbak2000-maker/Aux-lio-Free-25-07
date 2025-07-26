@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auxílio de Mira Grátis by @Barboza Store</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #2c003e, #6e00a3);
+      color: white;
+      overflow: hidden;
+    }
+    .login-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      width: 300px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #8a2be2;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .menu {
+      display: none;
+      padding: 20px;
+    }
+    .function-button {
+      background: #5f1782;
+      border: none;
+      color: white;
+      padding: 10px;
+      margin: 10px;
+      width: 90%;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .social {
+      margin-top: 15px;
+    }
+    .social a img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 10px;
+      box-shadow: 0 0 10px #ffffff88;
+      transition: transform 0.3s;
+    }
+    .social a img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #fff;
+    }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="login">
+    <h2>Bem-vindo!</h2>
+    <p>Digite a senha para acessar o painel:</p>
+    <input type="password" id="senha" placeholder="Senha">
+    <br>
+    <button onclick="verificarSenha()">Entrar</button>
+    <div class="social">
+      <a href="https://www.instagram.com/barbozaazzq7?igsh=MWhjcG1zMnVhamtmZg==" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+      </a>
+      <a href="https://discord.gg/rUjMnTwY" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+      </a>
+    </div>
+  </div>
+
+  <div class="menu" id="painel">
+    <h2>Functions Trick Grátis</h2>
+    <button class="function-button" onclick="autoSensi()">Auto Sensi</button>
+    <button class="function-button" onclick="redTrick()">Red Trick</button>
+    <button class="function-button" onclick="recoilControl()">Recoil Control</button>
+    <button class="function-button" onclick="fovAssist()">FOV Assist</button>
+    <button class="function-button" onclick="trickDelay()">Trick Delay</button>
+    <button class="function-button" onclick="aimPulse()">Aim Pulse</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <audio id="bipSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+  <script>
+    function verificarSenha() {
+      const senha = document.getElementById("senha").value;
+      if (senha === "shiatfree") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+      } else {
+        alert("Senha incorreta!");
+      }
+    }
+
+    function toast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      document.getElementById("bipSound").play();
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+
+    function autoSensi() {
+      let sensibilidadeX = 1.1;
+      let sensibilidadeY = 1.1;
+      console.log("Sensibilidade X/Y ajustada para leve alta", sensibilidadeX, sensibilidadeY);
+      toast("Auto Sensi ativado");
+    }
+
+    function redTrick() {
+      let delay = 300;
+      console.log("Mira puxando levemente para o peito/pescoço com delay", delay);
+      toast("Red Trick ativado");
+    }
+
+    function recoilControl() {
+      let recuo = 0.85;
+      console.log("Controle de recuo ativado com leve compensação", recuo);
+      toast("Recoil Control ativado");
+    }
+
+    function fovAssist() {
+      let fov = 20;
+      console.log("Assistente FOV ativado com alcance reduzido", fov);
+      toast("FOV Assist ativado");
+    }
+
+    function trickDelay() {
+      console.log("Trick Delay ativado com atraso simulado de 200ms");
+      setTimeout(() => toast("Trick Delay ativado"), 200);
+    }
+
+    function aimPulse() {
+      let pulso = setInterval(() => {
+        console.log("Oscilação de mira simulada");
+      }, 500);
+      setTimeout(() => clearInterval(pulso), 5000);
+      toast("Aim Pulse ativado");
+    }
+  </script>
+</body>
+</html>
